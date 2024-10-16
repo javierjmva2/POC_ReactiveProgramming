@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+
+<div class="ml-5 mr-5">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="text-center">Ultra Bullet<label id="lblTime_ultraBullet"></label></div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameBlack_ultraBullet"></label>&nbsp;&nbsp;<label id="lblUserRatingBlack_ultraBullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeBlack_ultraBullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <img class="img img-fluid" id="imgBoard_ultraBullet" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameWhite_ultraBullet"></label>&nbsp;&nbsp;<label id="lblUserRatingWhite_ultraBullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeWhite_ultraBullet"></label>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 mt-5">
+            <div class="text-center">Bullet<label id="lblTime_bullet"></label></div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameBlack_bullet"></label>&nbsp;&nbsp;<label id="lblUserRatingBlack_bullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeBlack_bullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <img class="img img-fluid" id="imgBoard_bullet" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameWhite_bullet"></label>&nbsp;&nbsp;<label id="lblUserRatingWhite_bullet"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeWhite_bullet"></label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-5">
+            <div class="text-center">Blitz<label id="lblTime_blitz"></label></div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameBlack_blitz"></label>&nbsp;&nbsp;<label id="lblUserRatingBlack_blitz"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeBlack_blitz"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <img class="img img-fluid" id="imgBoard_blitz" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblUserNameWhite_blitz"></label>&nbsp;&nbsp;<label id="lblUserRatingWhite_blitz"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label id="lblTimeWhite_blitz"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chessHub").build();
+
+    connection.on("UpdateBoard", function (channel, data) {
+        $('#imgBoard_' + channel).prop('src', data.d.image);
+
+        if (data.d.players != null && data.d.players.length > 0) {
+            var userBlack = data.d.players.find(s => s.color == 'black');
+            $('#lblUserNameBlack_' + channel).html('Username: ' + (userBlack.user.title != null ? userBlack.user.title + ' ' + userBlack.user.name : userBlack.user.name));
+
+            var userWhite = data.d.players.find(s => s.color == 'white');
+            $('#lblUserNameWhite_' + channel).html('Username: ' + (userWhite.user.title != null ? userWhite.user.title + ' ' + userWhite.user.name : userWhite.user.name));
+
+            $('#lblTime_' + channel).html('(' + userBlack.seconds + ' Seconds)');
+
+            $('#lblUserRatingBlack_' + channel).html('(' + userBlack.rating + ')');
+            $('#lblUserRatingWhite_' + channel).html('(' + userWhite.rating + ')');
+
+        } else {
+            let minutesBlack = ~~(data.d.bc / 60);
+            let extraSecondsBlack = data.d.bc % 60;
+
+            let minutesWhite = ~~(data.d.wc / 60);
+            let extraSecondsWhite = data.d.wc % 60;
+
+            $('#lblTimeWhite_' + channel).html('Time Left -> Minutes:' + (minutesBlack < 10 ? '0' + minutesBlack : minutesBlack) + " Seconds:" + (extraSecondsBlack < 10 ? '0' + extraSecondsBlack : extraSecondsBlack));
+            $('#lblTimeBlack_' + channel).html('Time Left -> Minutes:' + (minutesWhite < 10 ? '0' + minutesWhite : minutesWhite) + " Seconds:" + (extraSecondsWhite < 10 ? '0' + extraSecondsWhite : extraSecondsWhite));
+        }
+
+    });
+
+    connection.start().then(function () {
+        connection.invoke("SubscribeChannel", 'ultraBullet').catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.invoke("SubscribeChannel", 'bullet').catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        connection.invoke("SubscribeChannel", 'blitz').catch(function (err) {
+            return console.error(err.toString());
+        });
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+</script>

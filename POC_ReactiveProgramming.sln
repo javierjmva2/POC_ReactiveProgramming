@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC_ReactiveProgramming", "POC_ReactiveProgramming\POC_ReactiveProgramming.csproj", "{B26CAC75-B6C0-4F53-83D7-AC1E42017D14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{AEBC0875-BF17-4212-BF0B-0C43518EDEAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC_ReactiveProgramming.Interface", "POC_ReactiveProgramming.Interface\POC_ReactiveProgramming.Interface.csproj", "{1DFD84AD-2541-4A27-B1F3-44FF451E8519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC_ReactiveProgramming.Implementation", "POC_ReactiveProgramming.Implementation\POC_ReactiveProgramming.Implementation.csproj", "{9602B012-EA53-4603-A792-1F2D6E2B1786}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{B9C52453-AC82-4580-A6B1-18E4AB05B2DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC_ReactiveProgramming.Models", "POC_ReactiveProgramming.Models\POC_ReactiveProgramming.Models.csproj", "{E7C3B69C-7AD2-4972-B339-6B4413AD187D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B26CAC75-B6C0-4F53-83D7-AC1E42017D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26CAC75-B6C0-4F53-83D7-AC1E42017D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26CAC75-B6C0-4F53-83D7-AC1E42017D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26CAC75-B6C0-4F53-83D7-AC1E42017D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFD84AD-2541-4A27-B1F3-44FF451E8519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFD84AD-2541-4A27-B1F3-44FF451E8519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFD84AD-2541-4A27-B1F3-44FF451E8519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFD84AD-2541-4A27-B1F3-44FF451E8519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9602B012-EA53-4603-A792-1F2D6E2B1786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9602B012-EA53-4603-A792-1F2D6E2B1786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9602B012-EA53-4603-A792-1F2D6E2B1786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9602B012-EA53-4603-A792-1F2D6E2B1786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7C3B69C-7AD2-4972-B339-6B4413AD187D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C3B69C-7AD2-4972-B339-6B4413AD187D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C3B69C-7AD2-4972-B339-6B4413AD187D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C3B69C-7AD2-4972-B339-6B4413AD187D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1DFD84AD-2541-4A27-B1F3-44FF451E8519} = {AEBC0875-BF17-4212-BF0B-0C43518EDEAE}
+		{9602B012-EA53-4603-A792-1F2D6E2B1786} = {AEBC0875-BF17-4212-BF0B-0C43518EDEAE}
+		{E7C3B69C-7AD2-4972-B339-6B4413AD187D} = {B9C52453-AC82-4580-A6B1-18E4AB05B2DA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12A598D0-69F2-4823-9B37-A165D00B882D}
+	EndGlobalSection
+EndGlobal
